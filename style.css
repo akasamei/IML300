@@ -1,0 +1,289 @@
+/* Global reset / base */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+    "Segoe UI", sans-serif;
+  background: #000;
+  color: #fff;
+}
+
+/* Parallax background layers */
+.parallax-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -3;
+  opacity: 0.6;
+}
+
+/* Subtle gradient and noise-like overlays */
+.layer-back {
+  background: radial-gradient(circle at top, #222 0%, #000 60%);
+}
+
+.layer-mid {
+  background: radial-gradient(circle at bottom, #111 0%, transparent 55%);
+  mix-blend-mode: screen;
+}
+
+.layer-front {
+  background-image: radial-gradient(circle at 10% 20%, #333 0, transparent 40%),
+    radial-gradient(circle at 80% 70%, #222 0, transparent 40%);
+  mix-blend-mode: screen;
+}
+
+/* Hero section */
+.title {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+}
+
+.title-content {
+  padding: 2rem;
+}
+
+.title-name {
+  font-size: clamp(3rem, 6vw, 5rem);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  margin-bottom: 0.6rem;
+}
+
+.title-subtitle {
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  opacity: 0.8;
+  margin-bottom: 1.5rem;
+}
+
+.scroll-hint {
+  font-size: 0.85rem;
+  opacity: 0.6;
+}
+
+/* Main sections */
+.sections {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 1.5rem 6rem;
+}
+
+.sections-inner {
+  width: 100%;
+  max-width: 640px;
+  text-align: center;
+}
+
+/* Divider lines between section links */
+.divider {
+  height: 1px;
+  background: linear-gradient(to right, transparent, #444, transparent);
+  margin: 0.75rem 0;
+}
+
+/* Section links */
+.section-link {
+  display: block;
+  padding: 1.2rem 0.75rem;
+  text-decoration: none;
+  color: #fff;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  position: relative;
+  backdrop-filter: blur(0px);
+  transform: scale(1);
+  transition:
+    transform 0.25s ease,
+    color 0.25s ease,
+    opacity 0.25s ease,
+    backdrop-filter 0.25s ease;
+  opacity: 0.2; /* will fade in on scroll */
+}
+
+/* Slight base style for subtitle text */
+.section-link p {
+  font-size: 0.75rem;
+  text-transform: none;
+  letter-spacing: 0.1em;
+  margin-top: 0.35rem;
+  opacity: 0.7;
+}
+
+/* Hover effect: grey + blur + slightly bigger */
+.section-link:hover {
+  color: #ccc;
+  transform: scale(1.04);
+  backdrop-filter: blur(3px);
+}
+
+/* Underline-like glow on hover */
+.section-link::after {
+  content: "";
+  position: absolute;
+  left: 10%;
+  right: 10%;
+  bottom: 0.1rem;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(255, 255, 255, 0.6),
+    transparent
+  );
+  opacity: 0;
+  transform: scaleX(0.6);
+  transform-origin: center;
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
+}
+
+.section-link:hover::after {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+/* Footer */
+.main-footer {
+  text-align: center;
+  font-size: 0.75rem;
+  padding: 1rem 0 1.5rem;
+  opacity: 0.5;
+}
+
+/* Content pages (presentation, projects, etc.) */
+
+.content-page {
+  min-height: 100vh;
+  background: #000;
+  color: #fff;
+}
+
+.page-header {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 1rem;
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 1rem;
+  font-size: 0.85rem;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: #aaa;
+}
+
+.back-link:hover {
+  color: #fff;
+}
+
+.page-header h1 {
+  font-size: clamp(2rem, 3vw, 2.6rem);
+  margin-bottom: 0.4rem;
+}
+
+.page-subtitle {
+  opacity: 0.7;
+  font-size: 0.95rem;
+}
+
+.page-main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1rem 1.5rem 3rem;
+  line-height: 1.7;
+  font-size: 0.95rem;
+}
+
+/* Inline links */
+.inline-link {
+  color: #fff;
+  text-decoration: none;
+  border-bottom: 1px solid #555;
+  padding-bottom: 0.05rem;
+}
+
+.inline-link:hover {
+  color: #ddd;
+  border-bottom-color: #aaa;
+}
+
+/* Projects */
+.project-block {
+  margin-bottom: 2rem;
+}
+
+/* Exercises grid */
+.grid-container {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.grid-item {
+  border: 1px solid #222;
+  padding: 1rem;
+  border-radius: 10px;
+  background: #050505;
+}
+
+.grid-item iframe {
+  width: 100%;
+  height: 260px;
+  border: none;
+  margin-top: 0.75rem;
+  border-radius: 8px;
+}
+
+/* Responsive tweaks */
+@media (min-width: 720px) {
+  .grid-container {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-subtitle {
+    letter-spacing: 0.18em;
+  }
+  .section-link {
+    padding: 1rem 0.5rem;
+  }
+  #intro-canvas-wrapper {
+  position: fixed;
+  inset: 0;              /* top:0; right:0; bottom:0; left:0 */
+  z-index: 10;
+  pointer-events: none;  /* allows scrolling through */
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+/* Make sure the rest of your page stays behind the intro canvas */
+.scroll-intro,
+.title-section {
+  position: relative;
+  z-index: 1;
+}
+}

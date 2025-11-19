@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MEOW</title>
+
+  <link rel="stylesheet" href="style.css"/>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.9.3/lib/p5.min.js"></script>
+</head>
+<body>
+
+  <div id="intro-canvas-wrapper"></div>
+
+
+  <div class="page-with-banner">
+    <div id="hero-spacer" class="hero-spacer"></div>
+
+ 
+    <div class="banner-wrapper">
+      <img
+        id="banner-image"
+        src="images/scroll-banner.jpg"
+        alt="Scroll banner"
+        class="banner-image"
+      />
+    </div>
+
+  
+    <section id="home" class="title-section">
+      <div class="title-inner">
+        <h1>anti-anthropocentrism</h1>
+
+        <nav class="link-list">
+          <a href="plants.html" class="nav-link">plants</a>
+          <a href="animals.html" class="nav-link">animals</a>
+          <a href="ai.html" class="nav-link">ai</a>
+          <a href="nonliving.html" class="nav-link">nonliving</a>
+        </nav>
+      </div>
+    </section>
+  </div>
+
+
+  <script src="sketch.js"></script>
+
+
+  <script>
+    window.addEventListener("load", function () {
+      const img = document.getElementById("banner-image");
+      const spacer = document.getElementById("hero-spacer");
+      if (!img || !spacer) return;
+
+      function adjustSpacer() {
+        const vh = window.innerHeight;
+        const rect = img.getBoundingClientRect();
+        const imgHeight = rect.height || img.naturalHeight || 0;
+        const space = Math.max(0, vh - imgHeight);
+        spacer.style.height = space + "px";
+      }
+
+      adjustSpacer();
+      window.addEventListener("resize", adjustSpacer);
+    });
+  </script>
+</body>
+</html>
