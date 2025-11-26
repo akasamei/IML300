@@ -16,11 +16,11 @@ const imagePaths = [
 
 const NUM_IMAGES = imagePaths.length;
 
-const SPAWN_INTERVAL = 10;
+const SPAWN_INTERVAL = 20;
 const SPAWN_COUNT = 1;
 
 const MAX_ALPHA = 255 * 0.85;
-const FADE_SPEED = 0.8;
+const FADE_SPEED = 0.6;
 
 const MARGIN = 20;
 const MIN_SIZE = 80;

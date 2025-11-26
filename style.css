@@ -218,7 +218,7 @@ body {
   font-size: 0.95rem;
 }
 
-/* Inline links */
+
 .inline-link {
   color: #fff;
   text-decoration: none;
@@ -231,12 +231,12 @@ body {
   border-bottom-color: #aaa;
 }
 
-/* Projects */
+
 .project-block {
   margin-bottom: 2rem;
 }
 
-/* Exercises grid */
+
 .grid-container {
   display: grid;
   gap: 1.5rem;
@@ -257,7 +257,7 @@ body {
   border-radius: 8px;
 }
 
-/* Responsive tweaks */
+
 @media (min-width: 720px) {
   .grid-container {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -273,14 +273,13 @@ body {
   }
   #intro-canvas-wrapper {
   position: fixed;
-  inset: 0;              /* top:0; right:0; bottom:0; left:0 */
+  inset: 0;             
   z-index: 10;
-  pointer-events: none;  /* allows scrolling through */
+  pointer-events: none; 
   opacity: 1;
   transition: opacity 0.3s ease;
 }
 
-/* Make sure the rest of your page stays behind the intro canvas */
 .scroll-intro,
 .title-section {
   position: relative;
