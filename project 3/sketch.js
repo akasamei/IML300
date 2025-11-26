@@ -11,12 +11,7 @@ const imagePaths = [
   "assets/10.png",
   "assets/11.png",
   "assets/12.png",
-  "assets/13.png",
-  "assets/14.png",
-  "assets/15.png",
-  "assets/16.png",
-  "assets/17.png",
-  "assets/18.png"
+
 ];
 
 const NUM_IMAGES = imagePaths.length;
