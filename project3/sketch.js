@@ -10,18 +10,20 @@ const imagePaths = [
   "assets/9.png",
   "assets/10.png",
   "assets/11.png",
-  "assets/12.png",
-
+  "assets/12.png"
 ];
 
 const NUM_IMAGES = imagePaths.length;
 
-const SPAWN_INTERVAL = 20;
-const SPAWN_COUNT = 1;
+// spawn settings
+const SPAWN_INTERVAL = 20;    // frames between spawns
+const SPAWN_COUNT = 1;        // how many images per spawn
 
+// alpha / fade settings
 const MAX_ALPHA = 255 * 0.85;
 const FADE_SPEED = 0.6;
 
+// layout
 const MARGIN = 20;
 const MIN_SIZE = 80;
 const MAX_SIZE = 220;
@@ -29,7 +31,6 @@ const MAX_SIZE = 220;
 let imgs = [];
 let blurredImgs = [];
 let instances = [];
-
 
 let fadeWrapper = null;
 
@@ -55,7 +56,7 @@ function setup() {
 
   background(0);
 
-
+  // create blurred versions of each image
   for (let i = 0; i < imgs.length; i++) {
     let src = imgs[i];
     if (!src) {
@@ -69,7 +70,7 @@ function setup() {
     blurredImgs.push(g);
   }
 
-
+  // fade intro as we scroll
   window.addEventListener("scroll", handleScroll);
   handleScroll();
 }
@@ -96,6 +97,7 @@ function draw() {
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
 }
+
 
 
 function spawnImageInstance() {
@@ -141,6 +143,7 @@ class ImgInstance {
     let blurred = blurredImgs[this.imgIndex];
     if (!original || !blurred) return;
 
+   
     let hovering =
       mouseX >= this.x &&
       mouseX <= this.x + this.w &&

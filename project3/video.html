@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>video</title>
+
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    .video-main {
+      min-height: 100vh;
+      padding: 80px 24px 60px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .video-main h1 {
+      margin: 0 0 24px 0;
+      letter-spacing: 0.15em;
+      text-transform: none;
+      font-size: clamp(2rem, 4vw, 3rem);
+      text-align: center;
+    }
+
+    .video-warning {
+      font-size: 0.95rem;
+      opacity: 0.85;
+      margin-bottom: 24px;
+      text-align: center;
+    }
+
+    .video-list {
+      width: 100%;
+      max-width: 900px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .video-item {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #111;
+    }
+
+    .video-item iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <header class="simple-header">
+    <a href="index.html" class="back-link">← back to home</a>
+  </header>
+
+  <main class="video-main">
+    <h1>Animal Cruelty in Reality</h1>
+
+    <p class="video-warning">
+      these videos contain violence and abuse.
+    </p>
+
+    <div class="video-list">
+      <div class="video-item">
+        <iframe
+          src="https://www.youtube.com/embed/yp5ghhiIFbw"
+          title="youtube video 1"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+        ></iframe>
+      </div>
+
+      <div class="video-item">
+        <iframe
+          src="https://www.youtube.com/embed/thQlwsrKoWQ"
+          title="youtube video 2"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+        ></iframe>
+      </div>
+
+      <div class="video-item">
+        <iframe
+          src="https://www.youtube.com/embed/_x1inZ6Si9E"
+          title="youtube video 3"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+        ></iframe>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

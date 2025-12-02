@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>World Map: Animal Protection Laws that Meet Woah Standards</title>
+
+
+  <link rel="stylesheet" href="style.css" />
+
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/jqvmap/1.5.1/jqvmap.min.css"
+  />
+
+ 
+  <style>
+    .map-wrapper {
+      max-width: 1000px;
+      margin: 40px auto 20px;
+      padding: 0 16px;
+    }
+
+    .map-wrapper h1 {
+      font-size: 1.4rem;
+      margin-bottom: 12px;
+    }
+
+    .woah-toggle {
+      text-decoration: underline;
+      cursor: pointer;
+    }
+
+    .woah-definition {
+      margin-top: 8px;
+      padding: 12px 14px;
+      border: 1px solid #444;
+      max-width: 480px;
+      background: rgba(0, 0, 0, 0.8);
+      font-size: 0.9rem;
+    }
+
+    .woah-definition a {
+      color: #ccccff;
+      text-decoration: underline;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+  
+    .map-container {
+      position: relative;
+      margin-top: 24px;
+    }
+
+    #world-map {
+      width: 100%;
+      height: 500px;
+      border: 1px solid #333;
+    }
+
+  
+    #country-info.info-box {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      max-width: 260px;
+      padding: 12px 14px;
+      border: 1px solid #444;
+      background: rgba(0, 0, 0, 0.85);
+      min-height: 40px;
+      display: none; 
+    }
+
+    .info-inner {
+      font-size: 0.9rem;
+    }
+
+    .navigation-row {
+      max-width: 1000px;
+      margin: 40px auto 20px;
+      padding: 0 16px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .nav-text-link {
+      font-size: 0.9rem;
+      letter-spacing: 0.16em;
+    }
+
+    .nav-text-link:hover {
+      text-decoration: underline;
+    }
+
+ 
+    .legend {
+      max-width: 1000px;
+      margin: 30px auto 10px;
+      padding: 0 16px;
+      font-size: 0.9rem;
+    }
+
+    .legend-row {
+      display: flex;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .color-block {
+      width: 18px;
+      height: 18px;
+      margin-right: 10px;
+      border-radius: 2px;
+      border: 1px solid #222;
+    }
+
+    .color-no {
+      background-color: #660000;  
+    }
+
+    .color-partial {
+      background-color: #ff6666;  
+    }
+
+    .color-yes {
+      background-color: #8fd18f;  
+    }
+
+    .legend-text {
+      line-height: 1.4;
+    }
+
+   
+    .woah-info-section {
+      max-width: 1000px;
+      margin: 30px auto 40px;
+      padding: 0 16px 16px;
+      border: 1px solid #444;
+      background: rgba(0, 0, 0, 0.8);
+      font-size: 0.9rem;
+    }
+
+    .woah-info-section h2 {
+      margin-top: 12px;
+      margin-bottom: 8px;
+      font-size: 1rem;
+      letter-spacing: 0.12em;
+      text-transform: none;
+    }
+
+    .woah-info-section p {
+      margin: 8px 0;
+      line-height: 1.6;
+    }
+
+    .woah-info-section ul {
+      margin: 8px 0 8px 18px;
+      padding: 0;
+      line-height: 1.5;
+    }
+  </style>
+
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqvmap/1.5.1/jquery.vmap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqvmap/1.5.1/maps/jquery.vmap.world.js"></script>
+</head>
+<body>
+  <header class="simple-header">
+    <a href="index.html" class="back-link">← back to home</a>
+  </header>
+
+  <main class="map-wrapper">
+    <h1>
+      World Map: Animal Protection Laws that Meet 
+      <span id="woah-toggle" class="woah-toggle">WOAH</span>
+      Standards
+    </h1>
+
+
+    <p id="woah-definition" class="woah-definition hidden">
+      <a href="https://www.woah.org/en/home/" target="_blank">
+        world organisation for animal health (woah)
+      </a>
+    </p>
+
+  
+    <div class="map-container">
+      <div id="world-map"></div>
+
+      <div id="country-info" class="info-box">
+        <div class="info-inner">
+          click on a country to see its status.
+        </div>
+      </div>
+    </div>
+  </main>
+
+
+  <section class="legend">
+    <div class="legend-row">
+      <div class="color-block color-no"></div>
+      <div class="legend-text">
+        : no animal protection law that meets WOAH standard
+      </div>
+    </div>
+    <div class="legend-row">
+      <div class="color-block color-partial"></div>
+      <div class="legend-text">
+        : partial animal protection law (but varies internally) that meets WOAH standard
+      </div>
+    </div>
+    <div class="legend-row">
+      <div class="color-block color-yes"></div>
+      <div class="legend-text">
+        : animal protection that meets WOAH standard
+      </div>
+    </div>
+     <div class="legend-row">
+      <div class="color-block color-unknown"></div>
+      <div class="legend-text">
+        : unknown status regarding animal protection law meeting WOAH standard
+      </div>
+    </div>
+  </section>
+
+  
+  <section class="woah-info-section">
+    <h2>Woah animal protection law</h2>
+
+    <p>
+      Animal protection laws can meet WOAH (World Organisation for Animal Health) standards by
+      integrating woah's science-based principles into their own legislation, focusing on the
+      five domains of animal welfare, and implementing woah's recommendations for humane
+      practices in areas like transport, slaughter, and production systems. This requires
+      aligning national laws with international standards for disease control, animal health,
+      and welfare by ensuring legislation supports key elements like surveillance, reporting,
+      and the financing of animal health measures.
+    </p>
+
+    <h2>Five domains model:</h2>
+
+    
+    <ul>
+      <li>
+        <strong>Nutrition:</strong> evaluates access to proper food and water, and the animal's nutritional state.
+      </li>
+      <li>
+        <strong>Physical environment:</strong> assesses the animal's surroundings, including shelter,
+        housing, and factors that can cause stress or discomfort.
+      </li>
+      <li>
+        <strong>Health:</strong> considers the animal's physical health, including disease prevention,
+        injury, and pain.
+      </li>
+      <li>
+        <strong>Behavioral interactions:</strong> examines the opportunities for the animal to express
+        natural behaviors, such as social interactions, play, and other species-specific behaviors.
+      </li>
+      <li>
+        <strong>Mental state:</strong> reflects the animal's emotional experience and internal feeling
+        states, such as pleasure, fear, anxiety, or frustration.
+      </li>
+    </ul>
+
+    
+  </section>
+
+
+  <script>
+    $(function () {
+      $("#woah-toggle").on("click", function () {
+        $("#woah-definition").toggleClass("hidden");
+      });
+    });
+
+ 
+    const countryStatus = {
+      dz: "No",
+      ao: "No",
+      ar: "Yes",
+      au: "Partial – varies internally",
+      at: "Yes",
+      az: "No",
+      by: "No",
+      be: "Unknown",
+      ba: "No",
+      bw: "No",
+      br: "Yes",
+      bg: "Unknown",
+      kh: "No",
+      ca: "No",
+      cl: "No",
+      cn: "No",
+      co: "Yes",
+      cr: "Unknown",
+      hr: "Unknown",
+      cy: "Unknown",
+      cz: "Unknown",
+      cd: "No",
+      dk: "Yes",
+      eg: "No",
+      er: "No",
+      ee: "Unknown",
+      et: "No",
+      fj: "No",
+      fi: "Unknown",
+      fr: "Yes",
+      de: "Yes",
+      gr: "Unknown",
+      hk: "No",
+      hu: "Unknown",
+      in: "No",
+      id: "No",
+      ir: "No",
+      ie: "Unknown",
+      it: "No",
+      jp: "No",
+      kz: "No",
+      ke: "No",
+      lv: "Unknown",
+      lb: "Yes",
+      ls: "No",
+      lt: "Unknown",
+      lu: "Unknown",
+      mg: "No",
+      mw: "No",
+      my: "No",
+      ml: "No",
+      mt: "Unknown",
+      mu: "No",
+      mx: "No",
+      mn: "No",
+      ma: "No",
+      mz: "No",
+      mm: "No",
+      na: "No",
+      nz: "Yes",
+      nl: "Yes",
+      ne: "No",
+      kp: "No",
+      no: "No",
+      pk: "No",
+      py: "No",
+      pe: "No",
+      ph: "No",
+      pl: "No",
+      pt: "No",
+      ro: "No",
+      ru: "No",
+      sa: "No",
+      sc: "No",
+      sg: "Unknown",
+      sk: "Unknown",
+      si: "Unknown",
+      za: "No",
+      kr: "No",
+      es: "No",
+      sz: "No",
+      se: "Yes",
+      ch: "Yes",
+      tz: "No",
+      th: "No",
+      tr: "No",
+      ua: "No",
+      gb: "Yes",
+      us: "Partial – varies internally",
+      uy: "No",
+      ve: "No",
+      vn: "No",
+      zm: "No",
+      zw: "No"
+    };
+
+  
+    function statusColor(status) {
+      if (!status) return "#777777";               
+      if (status === "Yes") return "#8fd18f";      
+      if (status === "Unknown") return "#777777";  
+      if (status.indexOf("Partial") === 0) return "#ff6666"; 
+      return "#660000";                           
+    }
+
+    const regionColors = {};
+    Object.keys(countryStatus).forEach(function (code) {
+      regionColors[code] = statusColor(countryStatus[code]);
+    });
+
+    $(function () {
+      $("#world-map").vectorMap({
+        map: "world_en",
+        backgroundColor: "#000000",
+        color: "#222222",
+        hoverOpacity: 0.8,
+        selectedColor: "#444444",
+        enableZoom: true,
+        showTooltip: true,
+        borderColor: "#333333",
+        colors: regionColors,
+
+        onRegionClick: function (event, code, region) {
+          const status = countryStatus[code] || "Unknown";
+          const $info = $("#country-info");
+          const $map = $("#world-map");
+
+     
+          $info.html(
+            '<div class="info-inner">' +
+              "<strong>country name:</strong> " +
+              region.toLowerCase() +
+              "<br><strong>status:</strong> " +
+              status.toLowerCase() +
+              "</div>"
+          );
+
+         
+          const mapOffset = $map.offset();
+          const mapWidth = $map.width();
+          const mapHeight = $map.height();
+
+          let x = event.pageX - mapOffset.left + 10;
+          let y = event.pageY - mapOffset.top + 10;
+
+         
+          $info.css({ display: "block" });
+          const boxWidth = $info.outerWidth();
+          const boxHeight = $info.outerHeight();
+
+          if (x + boxWidth > mapWidth - 10) {
+            x = mapWidth - boxWidth - 10;
+          }
+          if (y + boxHeight > mapHeight - 10) {
+            y = mapHeight - boxHeight - 10;
+          }
+          if (x < 10) x = 10;
+          if (y < 10) y = 10;
+
+          $info.css({
+            left: x + "px",
+            top: y + "px"
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>

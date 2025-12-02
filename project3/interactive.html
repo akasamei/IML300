@@ -1,0 +1,212 @@
+
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>interactive</title>
+
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- jQuery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"></script>
+
+  <!-- page-specific layout styles -->
+  <style>
+    .interactive-main {
+      min-height: 100vh;
+      padding: 80px 24px 60px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .interactive-main h1 {
+      margin: 0 0 40px 0; /* extra space under the title */
+      letter-spacing: 0.15em;
+      text-transform: none;
+      font-size: clamp(2rem, 4vw, 3rem);
+    }
+
+    .interactive-images {
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 24px;
+      justify-content: center;
+      margin-bottom: 12px; /* space before hint text */
+    }
+
+    .interactive-images img {
+      position: static;          /* no absolute positioning */
+      width: 180px;
+      cursor: pointer;
+      transition: transform 0.2s ease, filter 0.2s ease;
+    }
+
+    .interactive-images img:hover {
+      transform: scale(3);
+      filter: brightness(1.2);
+    }
+
+    .interactive-text {
+      max-width: 800px;
+      line-height: 1.7;
+      font-size: 0.95rem;
+      opacity: 0.9;
+      text-align: left;
+      margin-top: 0;
+    }
+
+    .interactive-text h2 {
+      margin-top: 24px;
+      margin-bottom: 8px;
+      font-size: 1.1rem;
+      letter-spacing: 0.08em;
+    }
+
+    .interactive-text p {
+      margin: 0 0 10px 0;
+    }
+  </style>
+
+  <!-- toggle logic -->
+  <script src="interactive.js"></script>
+</head>
+<body>
+  <header class="simple-header">
+    <a href="index.html" class="back-link">← back to home</a>
+  </header>
+
+  <main class="interactive-main">
+    <h1>what if......</h1>
+
+    <div class="interactive-images">
+      <img
+        class="toggle-image"
+        src="images/circus1.jpg"
+        data-alt-src="images/circus.jpg"
+        alt="circus"
+      />
+
+      <img
+        class="toggle-image"
+        src="images/mouse1.jpg"
+        data-alt-src="images/mouse.jpg"
+        alt="mouse"
+      />
+
+      <img
+        class="toggle-image"
+        src="images/marine1.jpg"
+        data-alt-src="images/marine.jpg"
+        alt="marine"
+      />
+
+      <img
+        class="toggle-image"
+        src="images/duck1.jpg"
+        data-alt-src="images/duck.jpg"
+        alt="duck"
+      />
+
+      <img
+        class="toggle-image"
+        src="images/dog1.jpg"
+        data-alt-src="images/dog.jpg"
+        alt="dog"
+      />
+
+      <img
+        class="toggle-image"
+        src="images/deer1.jpg"
+        data-alt-src="images/deer.jpg"
+        alt="deer"
+      />
+    </div>
+
+    <p class="interactive-hint">
+      click the image to see what happens
+    </p>
+
+    <div class="interactive-text">
+      <h2>Circus and zoo animals</h2>
+      <p>
+        In circuses and some zoos, animals are expected to entertain: lions jump through hoops,
+        bears ride bicycles, elephants stand on small platforms or carry tourists on their backs.
+        These performances are not natural behaviors; they’re created through repetitive training
+        that can involve fear, punishment, and the constant threat of pain. When they are not on
+        display, animals may spend long hours in cramped cages, chained spaces, or concrete
+        enclosures with little mental stimulation. Elephants used for rides often carry heavy
+        loads for years, which can damage their spine, feet, and joints, leading to chronic pain
+        and early death. Even in “nice-looking” facilities, the lack of space, social structure,
+        and freedom to roam can cause stress, depression, and stereotypic behaviors like pacing
+        or self-harm. The animals become props in a show built to satisfy human curiosity and profit.
+      </p>
+
+      <h2>Experimental lab animals</h2>
+      <p>
+        In many laboratories, mice, rats, and other small animals are seen as tools for producing
+        data, not as individuals with feelings and needs. They may be injected with chemicals,
+        forced to inhale toxic substances, or have parts of their bodies altered to model human
+        diseases. Even when ethical guidelines exist on paper, overcrowded cages, loud environments,
+        and constant handling can create chronic stress and fear. Pain relief is not always adequate,
+        and animals rarely have the chance to explore, play, or form natural social groups. Most will
+        be killed at the end of an experiment, their lives reduced to a line in a research report. This
+        system raises difficult questions about whose suffering is “acceptable” in the name of scientific
+        progress.
+      </p>
+
+      <h2>Marine animals</h2>
+      <p>
+        Plastic bags, fishing nets, and other trash don’t just “float” in the ocean—they wrap around
+        bodies, fins, necks, and shells. Turtles can mistake plastic bags for jellyfish and slowly die
+        with their stomachs full of trash, unable to digest real food. Seals and dolphins get fishing
+        lines tangled around their necks or flippers; as they grow, the line cuts deeper into their skin,
+        leading to infection, bleeding, and intense pain. Even if they aren’t killed immediately, these
+        injuries make it harder for them to swim, escape predators, find food, or surface for air. Human
+        waste turns the ocean into a trap, where everyday objects become weapons against animals who
+        never chose to live beside our garbage.
+      </p>
+
+      <h2>Farm animals</h2>
+      <p>
+        Many farm animals live in conditions designed to maximize output, not well-being. Chickens may be
+        packed into cages so small they cannot spread their wings; pigs can be confined to crates where they
+        can barely turn around. To produce “specialty” products like goose liver for foie gras, some animals
+        are force-fed multiple times a day, causing their livers to swell painfully and their bodies to become
+        unbalanced. Overcrowded barns and dirty floors increase the risk of disease, leading to routine use of
+        antibiotics that also impact human health. In these systems, animals rarely see sunlight, touch grass,
+        or engage in normal social and exploratory behaviors; their lives are reduced to a schedule of feeding,
+        fattening, and slaughter. The demand for cheap meat and specific body parts turns living beings into
+        units on a conveyor belt, where suffering is built into the design.
+      </p>
+
+      <h2>Pets and breeding</h2>
+      <p>
+        Behind the cute puppies and kittens in pet shops or online listings, there are often breeding
+        facilities where animals are treated as production units. In these places, dogs, cats, and other
+        animals may be kept in small, stacked cages, with metal bars instead of soft floors, and little
+        protection from weather, noise, or filth. Mothers are bred repeatedly, even when their bodies are
+        exhausted, and rarely get to stay with their offspring long enough to form stable bonds. Veterinary
+        care may be minimal, and animals with genetic problems or illnesses might still be bred because they
+        can generate profit. Lack of socialization in early life can lead to anxiety, fear, and behavioral
+        issues later, long after the pet is sold. The visible “pet” that someone brings home is only the final
+        image of a whole hidden system of neglect.
+      </p>
+
+      <h2>Wild animals</h2>
+      <p>
+        Many wild animals are killed because certain parts of their bodies—horns, ivory, antlers, skins—are
+        considered valuable commodities. Elephants are shot or trapped so their tusks can be cut off; rhinos
+        are slaughtered for horns that are ground into powder and falsely sold as medicine or status symbols.
+        Deer, antelope, and other horned animals are targeted for trophies, turning their heads and antlers
+        into decorations for human spaces. This hunting is often cruel and unregulated, leaving injured animals
+        to suffer, orphaning young, and breaking up family groups. Beyond the individual deaths, removing key
+        species from ecosystems disrupts predator–prey relationships, plant growth, and biodiversity. What
+        begins as “just one horn” or “just one tusk” adds up to a global pattern of violence that empties
+        forests and savannas.
+      </p>
+    </div>
+  </main>
+</body>
+</html>
