@@ -15,15 +15,15 @@ const imagePaths = [
 
 const NUM_IMAGES = imagePaths.length;
 
-// spawn settings
-const SPAWN_INTERVAL = 20;    // frames between spawns
-const SPAWN_COUNT = 1;        // how many images per spawn
 
-// alpha / fade settings
+const SPAWN_INTERVAL = 20;   
+const SPAWN_COUNT = 1;        
+
+
 const MAX_ALPHA = 255 * 0.85;
 const FADE_SPEED = 0.6;
 
-// layout
+
 const MARGIN = 20;
 const MIN_SIZE = 80;
 const MAX_SIZE = 220;
@@ -56,7 +56,7 @@ function setup() {
 
   background(0);
 
-  // create blurred versions of each image
+  
   for (let i = 0; i < imgs.length; i++) {
     let src = imgs[i];
     if (!src) {
@@ -70,7 +70,7 @@ function setup() {
     blurredImgs.push(g);
   }
 
-  // fade intro as we scroll
+
   window.addEventListener("scroll", handleScroll);
   handleScroll();
 }
