@@ -2,57 +2,43 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Akasa Mei | IML300</title>
+    <title>IML300 Portfolio</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="main.js"></script>
+ 
     <link rel="stylesheet" href="style.css" />
   </head>
 
   <body>
+   
+    <div id="crown-container">
+      <img id="crown-img" src="images/crown.jpg" alt="Crown" />
+    </div>
 
-    <div class="parallax-layer layer-back"></div>
-    <div class="parallax-layer layer-mid"></div>
-    <div class="parallax-layer layer-front"></div>
+    <nav>
+  <div class="menu-button" id="menuButton"></div>
 
+  <div class="menu" id="menu">
+    <ul>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="presentation.html">Pecha-kucha Presentation</a></li>
+    <li><a href="exercises.html">Exercises</a></li>
+    <li><a href="vibe-coding.html">Vibe Coding</a></li>
+    </ul>
+  </div>
 
-    <section class="title">
-      <div class="title-content">
-        <h1 class="title-name">Akasa Mei</h1>
-        <p class="title-subtitle">IML 300 Introduction to Webpromming</p>
-        <span class="scroll-hint">Scroll  ↓</span>
-      </div>
-    </section>
+  <div class="cover" id="menuCover"></div>
+</nav>
 
-
-    <main class="sections">
-      <div class="sections-inner">
-        <a href="presentation.html" class="section-link">
-          <h2>Presentation</h2>
-        
-        </a>
-
-        <div class="divider"></div>
-
-        <a href="projects.html" class="section-link">
-          <h2>Projects</h2>
-        </a>
-
-        <div class="divider"></div>
-
-        <a href="exercises.html" class="section-link">
-          <h2>Exercises</h2>
-        </a>
-
-        <div class="divider"></div>
-
-        <a href="vibes.html" class="section-link">
-          <h2>Vibe Coding Experiments</h2>
-        </a>
-      </div>
-    </main>
-
-    <footer class="main-footer">
-      <span>Fall 2025 · Akasa Mei · IML 300</span>
+   
+    <footer id="site-footer">
+      Akasa Mei | IML 300 Fall25
     </footer>
 
-    <script src="script.js"></script>
+   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+
+   
+    <script src="home.js"></script>
   </body>
 </html>
